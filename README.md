@@ -10,7 +10,7 @@
 
 ---
 
-A ruby implementation of Node's [classnames](https://www.npmjs.com/package/classnames) package.
+A rails helper to handle page specific styles and scripts
 
 ## Installation
 
@@ -30,7 +30,30 @@ Or install it yourself as:
 
 ## Usage
 
+Create your page files:
+```scss
+// stylesheets/pages/home.page.scss
 
+body.home {
+  section.resources {
+    background-color: $black-7;
+  }
+}
+```
+```javascript
+// javascripts/pages/home.page.js
+
+console.log('Hello world!');
+```
+
+And include them in your page with our helper:
+```erb
+<%= load_page_assets(
+  "home", # the name of the page (ex. "home".page.js)
+  script: true, # default: false
+  style: true # default: false
+) %>
+```
 
 ## Development
 
